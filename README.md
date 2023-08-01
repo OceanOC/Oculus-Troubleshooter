@@ -1,5 +1,5 @@
 
-#  Oculus Troubleshooter ![alt text](https://github.com/OceanOC/Quest-Troubleshooter/blob/main/icon.ico "Icon")
+#  Oculus Troubleshooter &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](https://github.com/OceanOC/Quest-Troubleshooter/blob/main/icon.ico "Icon")
 
 Makes finding Oculus files easy and allows to change some settings
 
