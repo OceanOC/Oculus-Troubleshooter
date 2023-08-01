@@ -1,12 +1,12 @@
 
-# Oculus Troubleshooter
+#  Oculus Troubleshooter ![alt text](https://github.com/OceanOC/Quest-Troubleshooter/blob/main/icon.ico "Icon")
 
 Makes finding Oculus files easy and allows to change some settings
 
 
 ## Why do I need this?
 
-if you want to change settings from the debug tool you'd have to go through tons of files just to open it instead you'd just have to press 2 buttons with this program
+if you want to change settings from the debug tool you'd have to go through tons of files to open it instead you'd just have to press 2 buttons with this program
 ## Installation
 
 Run the Quest Troubleshooter from 
