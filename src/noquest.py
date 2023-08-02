@@ -4,10 +4,14 @@ import subprocess
 import time
 import os.path
 
+oculuspath = os.getenv('OculusBase')
+cmdpath = oculuspath+"Support\oculus-diagnostics\CommandsforCLI.txt"
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(499, 405)
+        MainWindow.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
@@ -52,7 +56,7 @@ class Ui_MainWindow(object):
         self.pushButton_4.setFont(font)
         self.pushButton_4.setObjectName("pushButton_4")
         self.progressBar = QtWidgets.QProgressBar(parent=self.centralwidget)
-        self.progressBar.setGeometry(QtCore.QRect(0, 380, 251, 20))
+        self.progressBar.setGeometry(QtCore.QRect(10, 380, 251, 20))
         self.progressBar.setProperty("value", 0)
         self.progressBar.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.progressBar.setInvertedAppearance(False)
@@ -84,7 +88,7 @@ class Ui_MainWindow(object):
         self.groupBox.setObjectName("groupBox")
         self.pushButton_7 = QtWidgets.QPushButton(parent=self.groupBox)
         self.pushButton_7.setGeometry(QtCore.QRect(210, 230, 71, 41))
-        self.pushButton_7.pressed.connect(self.ChangeASW)
+        self.pushButton_7.pressed.connect(self.ApplyAdvancedSettings)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -97,7 +101,7 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.scrollArea.sizePolicy().hasHeightForWidth())
         self.scrollArea.setSizePolicy(sizePolicy)
-        self.scrollArea.setGeometry(QtCore.QRect(10, 20, 261, 171))
+        self.scrollArea.setGeometry(QtCore.QRect(10, 30, 261, 191))
         self.scrollArea.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.scrollArea.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.scrollArea.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
@@ -106,10 +110,10 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(False)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 244, 201))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 244, 321))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.groupBox_2 = QtWidgets.QGroupBox(parent=self.scrollAreaWidgetContents)
-        self.groupBox_2.setGeometry(QtCore.QRect(0, 0, 241, 151))
+        self.groupBox_2.setGeometry(QtCore.QRect(0, 0, 231, 151))
         self.groupBox_2.setFlat(False)
         self.groupBox_2.setObjectName("groupBox_2")
         self.radioButton = QtWidgets.QRadioButton(parent=self.groupBox_2)
@@ -141,7 +145,21 @@ class Ui_MainWindow(object):
         font.setBold(False)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setObjectName("pushButton_6")
+        #self.checkBox = QtWidgets.QCheckBox(parent=self.scrollAreaWidgetContents)
+        #self.checkBox.setGeometry(QtCore.QRect(20, 220, 191, 20))
+        #self.checkBox.setObjectName("checkBox")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+        self.label_3 = QtWidgets.QLabel(parent=self.groupBox)
+        self.label_3.setEnabled(True)
+        self.label_3.setHidden(True)
+        self.label_3.setGeometry(QtCore.QRect(20, 230, 181, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(False)
+        self.label_3.setFont(font)
+        self.label_3.setScaledContents(False)
+        self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_3.setObjectName("label_3")
         self.pushButton_8 = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton_8.setGeometry(QtCore.QRect(10, 120, 91, 41))
         font = QtGui.QFont()
@@ -166,8 +184,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Quest Troubleshooter"))
         self.label.setText(_translate("MainWindow", "Quest Troubleshooter"))
-        self.pushButton.setText(_translate("MainWindow", "Stop Quest"))
-        self.pushButton_2.setText(_translate("MainWindow", "Start  Quest"))
+        self.pushButton.setText(_translate("MainWindow", "Stop Oculus"))
+        self.pushButton_2.setText(_translate("MainWindow", "Start Oculus"))
         self.pushButton_3.setText(_translate("MainWindow", "Fix  Drivers"))
         self.pushButton_4.setText(_translate("MainWindow", "Debug Tool"))
         self.pushButton_5.setText(_translate("MainWindow", "Auto Troubleshoot"))
@@ -182,6 +200,8 @@ class Ui_MainWindow(object):
         self.radioButton_5.setText(_translate("MainWindow", "Off"))
         self.pushButton_6.setText(_translate("MainWindow", "Reinstall Oculus Software"))
         self.radioButton_6.setText(_translate("MainWindow", "Force 45Hz"))
+        #self.checkBox.setText(_translate("MainWindow", "Disable Controller Sleep"))
+        self.label_3.setText(_translate("MainWindow", "(Oculus Restart Required)"))
         self.pushButton_8.setText(_translate("MainWindow", "Gather Logs"))
         self.pushButton_9.setText(_translate("MainWindow", "Mirror"))
 
@@ -213,7 +233,7 @@ class Ui_MainWindow(object):
 
     def fixdriver(self):
         self.progressBar.setValue(0)
-        subprocess.Popen("C:\Program Files\Oculus\Support\oculus-drivers\oculus-driver.exe",
+        subprocess.Popen(oculuspath+"Support\oculus-drivers\oculus-driver.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -224,7 +244,7 @@ class Ui_MainWindow(object):
         self.progressBar.setValue(100)
         
     def debugtool (self):
-                subprocess.Popen("C:\Program Files\Oculus\Support\oculus-diagnostics\OculusDebugTool.exe",
+                subprocess.Popen(oculuspath+"Support\oculus-diagnostics\OculusDebugTool.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -250,7 +270,7 @@ class Ui_MainWindow(object):
                          )
                 self.progressBar.setValue(60)
                 time.sleep(5.3)
-                subprocess.Popen("C:\Program Files\Oculus\Support\oculus-drivers\oculus-driver.exe",
+                subprocess.Popen(oculuspath+"Support\oculus-drivers\oculus-driver.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -260,7 +280,6 @@ class Ui_MainWindow(object):
 
     def ReinstallOculus(self):
         self.progressBar.setValue(0)
-        # It needs to basically delete all the EXEs from the runtime and run the "fixer.exe" (the "fixer.exe" will add new EXEs)
         subprocess.Popen("net stop OVRService",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
@@ -269,8 +288,8 @@ class Ui_MainWindow(object):
                          )
         time.sleep(2.34)
         self.progressBar.setValue(10)
-        # Probably not the best way the to delete items and Oculus made the quest work only on windows so it will work
-        subprocess.Popen("del /f /q C:\Program Files\Oculus\Support\oculus-runtime\OVRServer_x64.exe",
+        # Probably not the best way the to delete items but atleast it works (for now)
+        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServer_x64.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -278,7 +297,7 @@ class Ui_MainWindow(object):
                          )
         self.progressBar.setValue(30)
         time.sleep(3.24)
-        subprocess.Popen("del /f /q C:\Program Files\Oculus\Support\oculus-runtime\OVRServiceLauncher.exe",
+        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServiceLauncher.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -286,7 +305,7 @@ class Ui_MainWindow(object):
                          )
         self.progressBar.setValue(50)
         time.sleep(2.11)
-        subprocess.Popen("del /f /q C:\Program Files\Oculus\Support\oculus-runtime\OVRRedir.exe",
+        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRRedir.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
@@ -294,49 +313,53 @@ class Ui_MainWindow(object):
                          )
         time.sleep(4.2)
         self.progressBar.setValue(70)
-        subprocess.Popen("C:\Program Files\Oculus\Support\oculus-diagnostics\Fixer.exe",
+        subprocess.Popen(oculuspath+"\Support\oculus-diagnostics\Fixer.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
                          shell = True
                          )
+        self.progressBar.setValue(100)
+    
     def openmirror(self):
-        subprocess.Popen("C:\Program Files\Oculus\Support\oculus-diagnostics\OculusMirror.exe",
+        subprocess.Popen(oculuspath+"Support\oculus-diagnostics\OculusMirror.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
                          shell = True
                          )
-    def ChangeASW(self):
+        
+    def ApplyAdvancedSettings(self):
         if self.radioButton.isChecked() == True:
-                f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "r+")
+                f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Auto")
                 f.close()
 
         if self.radioButton_2.isChecked() == True:
-                f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "r+")
+                f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Clock18")
                 f.close()
 
         if self.radioButton_3.isChecked() == True:
-                f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "r+")
+                f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Clock30")
                 f.close()
              
         if self.radioButton_4.isChecked() == True:
-                f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "r+")
+                f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Clock45")
                 f.close()
 
         if self.radioButton_5.isChecked() == True:
-                f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "r+")
+                f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Off")
                 f.close()
+
 
 if __name__ == "__main__":
     import sys
@@ -346,19 +369,19 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
-
-    g = os.path.isfile("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt")
+    g = os.path.isfile(cmdpath)
     if g == True:
-            print("Creating Command file...") # this does nothing but Python needed a command here
+            print("Command file already created") # this does nothing but Python needed a command here
     else:
-        subprocess.Popen("""takeown /F "C:\Program Files\Oculus\Support\oculus-diagnostics" /A /R""",
+        print("Command file creating...")
+        subprocess.Popen("takeown /F "+oculuspath+"""\Support\oculus-diagnostics" /A /R""",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
-                         shell = True
+                         shell = True,
                          )
 
-        f = open("C:\Program Files\Oculus\Support\oculus-diagnostics\CommandsforCLI.txt", "x")
+        f = open(cmdpath, "x")
         f.close()
 
     sys.exit(app.exec())
