@@ -9,7 +9,6 @@ if you want to change settings from the debug tool you'd have to go through tons
 ## Installation
 
 Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-Troubleshooter/releases/)
-###### This will not work unless the Oculus software installation in the default directory although it will be fixed in a later update
     
 ## Building from source
 
