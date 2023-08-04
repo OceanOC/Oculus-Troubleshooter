@@ -8,7 +8,7 @@ Makes finding Oculus files easy and allows to change some settings
 if you want to change settings from the debug tool you'd have to go through tons of files to open it instead you'd just have to press 2 buttons with this program
 ## Installation
 
-Run the Quest Troubleshooter from [Releases](https://github.com/OceanOC/Quest-Troubleshooter/releases/)
+Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-Troubleshooter/releases/)
 ###### This will not work unless the Oculus software installation in the default directory although it will be fixed in a later update
     
 ## Building from source
