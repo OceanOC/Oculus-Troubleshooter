@@ -1,4 +1,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
+from PyQt6.QtWidgets import QMessageBox
+from PyQt6.QtGui import QIcon
 import PyQt6
 import subprocess
 import time
@@ -6,11 +8,13 @@ import os.path
 
 oculuspath = os.getenv('OculusBase')
 cmdpath = oculuspath+"Support\oculus-diagnostics\CommandsforCLI.txt"
+ver = "1.2.1a"
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(499, 405)
+        MainWindow.setFixedSize(499, 405)
         MainWindow.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -24,7 +28,7 @@ class Ui_MainWindow(object):
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(10, 10, 91, 41))
+        self.pushButton.setGeometry(QtCore.QRect(10, 20, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -32,7 +36,7 @@ class Ui_MainWindow(object):
         self.pushButton.setObjectName("pushButton")
         self.pushButton.pressed.connect(self.stopquest)
         self.pushButton_2 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(10, 60, 91, 41))
+        self.pushButton_2.setGeometry(QtCore.QRect(10, 60, 91, 31))
         self.pushButton_2.pressed.connect(self.startquest)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -40,16 +44,16 @@ class Ui_MainWindow(object):
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(110, 10, 91, 41))
-        self.pushButton_3.pressed.connect(self.fixdriver)
+        self.pushButton_3.setGeometry(QtCore.QRect(110, 20, 91, 31))
+        self.pushButton_3.pressed.connect(self.FixDriver)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName("pushButton_3")
         self.pushButton_4 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(110, 60, 91, 41))
-        self.pushButton_4.pressed.connect(self.debugtool)
+        self.pushButton_4.setGeometry(QtCore.QRect(110, 60, 91, 31))
+        self.pushButton_4.pressed.connect(self.DebugTool)
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -61,20 +65,6 @@ class Ui_MainWindow(object):
         self.progressBar.setOrientation(QtCore.Qt.Orientation.Horizontal)
         self.progressBar.setInvertedAppearance(False)
         self.progressBar.setObjectName("progressBar")
-        self.pushButton_5 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_5.setGeometry(QtCore.QRect(30, 330, 151, 41))
-        self.pushButton_5.pressed.connect(self.autotroubleshoot)
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(False)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(60, 310, 91, 16))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
         self.groupBox = QtWidgets.QGroupBox(parent=self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(210, 10, 281, 281))
         font = QtGui.QFont()
@@ -131,6 +121,7 @@ class Ui_MainWindow(object):
         self.radioButton_4.setObjectName("radioButton_4")
         self.radioButton_5 = QtWidgets.QRadioButton(parent=self.groupBox_2)
         self.radioButton_5.setGeometry(QtCore.QRect(20, 120, 101, 20))
+        self.radioButton_5.setChecked(True)
         self.radioButton_5.setObjectName("radioButton_5")
         self.radioButton_6 = QtWidgets.QRadioButton(parent=self.groupBox_2)
         self.radioButton_6.setGeometry(QtCore.QRect(20, 100, 101, 20))
@@ -145,9 +136,9 @@ class Ui_MainWindow(object):
         font.setBold(False)
         self.pushButton_6.setFont(font)
         self.pushButton_6.setObjectName("pushButton_6")
-        #self.checkBox = QtWidgets.QCheckBox(parent=self.scrollAreaWidgetContents)
-        #self.checkBox.setGeometry(QtCore.QRect(20, 220, 191, 20))
-        #self.checkBox.setObjectName("checkBox")
+        self.checkBox = QtWidgets.QCheckBox(parent=self.scrollAreaWidgetContents)
+        self.checkBox.setGeometry(QtCore.QRect(20, 220, 191, 20))
+        self.checkBox.setObjectName("checkBox")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.label_3 = QtWidgets.QLabel(parent=self.groupBox)
         self.label_3.setEnabled(True)
@@ -161,7 +152,7 @@ class Ui_MainWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.pushButton_8 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton_8.setGeometry(QtCore.QRect(10, 120, 91, 41))
+        self.pushButton_8.setGeometry(QtCore.QRect(10, 100, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
@@ -169,12 +160,20 @@ class Ui_MainWindow(object):
         self.pushButton_8.setObjectName("pushButton_8")
         self.pushButton_9 = QtWidgets.QPushButton(parent=self.centralwidget)
         self.pushButton_9.pressed.connect(self.openmirror)
-        self.pushButton_9.setGeometry(QtCore.QRect(110, 120, 91, 41))
+        self.pushButton_9.setGeometry(QtCore.QRect(110, 100, 91, 31))
         font = QtGui.QFont()
         font.setPointSize(12)
         font.setBold(False)
         self.pushButton_9.setFont(font)
         self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButton_10 = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.pushButton_10.setGeometry(QtCore.QRect(10, 340, 151, 31))
+        self.pushButton_10.pressed.connect(self.OpenFolder)
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(False)
+        self.pushButton_10.setFont(font)
+        self.pushButton_10.setObjectName("pushButton_10")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -182,14 +181,12 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Quest Troubleshooter"))
-        self.label.setText(_translate("MainWindow", "Quest Troubleshooter"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Oculus Troubleshooter"))
+        self.label.setText(_translate("MainWindow", "Oculus Troubleshooter"))
         self.pushButton.setText(_translate("MainWindow", "Stop Oculus"))
         self.pushButton_2.setText(_translate("MainWindow", "Start Oculus"))
         self.pushButton_3.setText(_translate("MainWindow", "Fix  Drivers"))
         self.pushButton_4.setText(_translate("MainWindow", "Debug Tool"))
-        self.pushButton_5.setText(_translate("MainWindow", "Auto Troubleshoot"))
-        self.label_2.setText(_translate("MainWindow", "Recomended"))
         self.groupBox.setTitle(_translate("MainWindow", "Advanced"))
         self.pushButton_7.setText(_translate("MainWindow", "Apply"))
         self.groupBox_2.setTitle(_translate("MainWindow", "ASW Options"))
@@ -200,10 +197,11 @@ class Ui_MainWindow(object):
         self.radioButton_5.setText(_translate("MainWindow", "Off"))
         self.pushButton_6.setText(_translate("MainWindow", "Reinstall Oculus Software"))
         self.radioButton_6.setText(_translate("MainWindow", "Force 45Hz"))
-        #self.checkBox.setText(_translate("MainWindow", "Disable Controller Sleep"))
+        self.checkBox.setText(_translate("MainWindow", "Disable Controller Sleep"))
         self.label_3.setText(_translate("MainWindow", "(Oculus Restart Required)"))
         self.pushButton_8.setText(_translate("MainWindow", "Gather Logs"))
         self.pushButton_9.setText(_translate("MainWindow", "Mirror"))
+        self.pushButton_10.setText(_translate("MainWindow", "Open Oculus folder"))
 
     def startquest(self):
         self.progressBar.setValue(0)
@@ -216,6 +214,7 @@ class Ui_MainWindow(object):
                          shell = True
                          )
         time.sleep(3.5)
+        self.label_3.setHidden(True)
         self.progressBar.setValue(100)
         
     def stopquest(self):
@@ -231,7 +230,7 @@ class Ui_MainWindow(object):
         time.sleep(2.56)
         self.progressBar.setValue(100)
 
-    def fixdriver(self):
+    def FixDriver(self):
         self.progressBar.setValue(0)
         subprocess.Popen(oculuspath+"Support\oculus-drivers\oculus-driver.exe",
                          stdout = subprocess.PIPE, 
@@ -243,7 +242,7 @@ class Ui_MainWindow(object):
         time.sleep(3.6)
         self.progressBar.setValue(100)
         
-    def debugtool (self):
+    def DebugTool (self):
                 subprocess.Popen(oculuspath+"Support\oculus-diagnostics\OculusDebugTool.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
@@ -251,75 +250,59 @@ class Ui_MainWindow(object):
                          shell = True
                          )
                 
-    def autotroubleshoot(self):
-                self.progressBar.setValue(0)
-                # do very basic things
-                subprocess.Popen("net stop OVRService",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-                self.progressBar.setValue(30)
-                time.sleep(3.1)
-                subprocess.Popen("net start OVRService",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-                self.progressBar.setValue(60)
-                time.sleep(5.3)
-                subprocess.Popen(oculuspath+"Support\oculus-drivers\oculus-driver.exe",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-                self.progressBar.setValue(100)
-
     def ReinstallOculus(self):
-        self.progressBar.setValue(0)
-        subprocess.Popen("net stop OVRService",
+        dlg = QMessageBox()
+        dlg.setWindowTitle("Are you sure?")
+        dlg.setText("Are you sure you want to reinstall Oculus?")
+        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        dlg.setIcon(QMessageBox.Icon.Question)
+        button = dlg.exec()
+        if button == QMessageBox.StandardButton.Yes:
+            self.progressBar.setValue(0)
+            subprocess.Popen("net stop OVRService",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
                          text = True,
                          shell = True
                          )
-        time.sleep(2.34)
-        self.progressBar.setValue(10)
-        # Probably not the best way the to delete items but atleast it works (for now)
-        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServer_x64.exe",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-        self.progressBar.setValue(30)
-        time.sleep(3.24)
-        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServiceLauncher.exe",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-        self.progressBar.setValue(50)
-        time.sleep(2.11)
-        subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRRedir.exe",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-        time.sleep(4.2)
-        self.progressBar.setValue(70)
-        subprocess.Popen(oculuspath+"\Support\oculus-diagnostics\Fixer.exe",
-                         stdout = subprocess.PIPE, 
-                         stderr = subprocess.PIPE,
-                         text = True,
-                         shell = True
-                         )
-        self.progressBar.setValue(100)
+            time.sleep(2.34)
+            self.progressBar.setValue(10)
+            # Probably not the best way the to delete items but atleast it works (for now)
+            subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServer_x64.exe",
+                             stdout = subprocess.PIPE, 
+                             stderr = subprocess.PIPE,
+                             text = True,
+                             shell = True
+                             )
+            self.progressBar.setValue(30)
+            time.sleep(3.24)
+            subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRServiceLauncher.exe",
+                             stdout = subprocess.PIPE, 
+                             stderr = subprocess.PIPE,
+                             text = True,
+                             shell = True
+                             )
+            self.progressBar.setValue(50)
+            time.sleep(2.11)
+            subprocess.Popen("del /f /q "+oculuspath+"Support\oculus-runtime\OVRRedir.exe",
+                             stdout = subprocess.PIPE, 
+                             stderr = subprocess.PIPE,
+                             text = True,
+                             shell = True
+                             )
+            time.sleep(4.2)
+            self.progressBar.setValue(70)
+            subprocess.Popen(oculuspath+"\Support\oculus-diagnostics\Fixer.exe",
+                             stdout = subprocess.PIPE, 
+                             stderr = subprocess.PIPE,
+                             text = True,
+                             shell = True
+                             )
+            self.progressBar.setValue(100)
+        else:
+            print("No!")
+
+        
     
     def openmirror(self):
         subprocess.Popen(oculuspath+"Support\oculus-diagnostics\OculusMirror.exe",
@@ -330,35 +313,70 @@ class Ui_MainWindow(object):
                          )
         
     def ApplyAdvancedSettings(self):
+        aswdone = False
+
         if self.radioButton.isChecked() == True:
+                aswdone = False
                 f = open(cmdpath, "r+")
                 f.truncate(0)
                 f.write("server:asw.Auto")
                 f.close()
+                aswdone = True
+
 
         if self.radioButton_2.isChecked() == True:
+                aswdone = False
                 f = open(cmdpath, "r+")
                 f.truncate(0)
-                f.write("server:asw.Clock18")
+                f.write("server:asw.Clock18\r\n")
                 f.close()
+                aswdone = True
 
         if self.radioButton_3.isChecked() == True:
+                aswdone = False
                 f = open(cmdpath, "r+")
                 f.truncate(0)
-                f.write("server:asw.Clock30")
+                f.write("server:asw.Clock30\r\n")
                 f.close()
+                aswdone = True
              
         if self.radioButton_4.isChecked() == True:
+                aswdone = False
                 f = open(cmdpath, "r+")
                 f.truncate(0)
-                f.write("server:asw.Clock45")
+                f.write("server:asw.Clock45\r\n")
                 f.close()
+                aswdone = True
 
         if self.radioButton_5.isChecked() == True:
+                aswdone = False
                 f = open(cmdpath, "r+")
                 f.truncate(0)
-                f.write("server:asw.Off")
+                f.write("server:asw.Off\r\n")
                 f.close()
+                aswdone = True
+
+        if self.radioButton_6.isChecked() == True:
+                aswdone = False
+                f = open(cmdpath, "r+")
+                f.truncate(0)
+                f.write("server:asw.Sim45\r\n")
+                f.close()
+                aswdone = True
+
+        if self.checkBox.isChecked() == True and aswdone == True:
+                f = open(cmdpath, "a+")
+                f.write("server:Touch.DisableSleep true\r\n")
+                f.close()
+                self.label_3.setHidden(False)
+
+    def OpenFolder(self):
+                  subprocess.Popen("explorer "+oculuspath,
+                         stdout = subprocess.PIPE, 
+                         stderr = subprocess.PIPE,
+                         text = True,
+                         shell = True
+                         )
 
 
 if __name__ == "__main__":

@@ -21,11 +21,3 @@ Requirements: Python 3.10 (should work in 3.8+)
   pip install -U PyQt6
 ```
 2. Run noquest.py with Admin Privileges
-
-3. (Not needed) Install PyInstaller and run with these commands to get a EXE
-
-```bash
-    pip install PyInstaller
-
-    python -m pyinstaller --noconfirm --onefile --windowed --name "Quest Troubleshooter" --clean --uac-admin --add-data "(path to PyQt6 folder)"  "(Path to noquest.py)"
-```
