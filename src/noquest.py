@@ -183,17 +183,11 @@ class SettingsWindow(QWidget):
     def ReinstallOculus(self):
         dlg = QMessageBox()
         dlg.setWindowTitle("Are you sure?")
-        dlg.setText("Are you sure you want to reinstall Oculus?")
+        dlg.setText("""Are you sure you want to reinstall Oculus? \r\n If yes, press the Repair button on the next window""")
         dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         dlg.setIcon(QMessageBox.Icon.Question)
         button = dlg.exec()
         if button == QMessageBox.StandardButton.Yes:
-            dlg = QMessageBox()
-            dlg.setWindowTitle("Repair")
-            dlg.setText("Press Repair Oculus in the next window to reinstall")
-            dlg.setStandardButtons(QMessageBox.StandardButton.Ok)
-            dlg.setIcon(QMessageBox.Icon.Information)
-            if button == QMessageBox.StandardButton.Ok:
                   subprocess.Popen(oculuspath+"OculusSetup.exe",
                          stdout = subprocess.PIPE, 
                          stderr = subprocess.PIPE,
