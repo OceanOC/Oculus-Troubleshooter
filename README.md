@@ -2,6 +2,7 @@
 #  Oculus Troubleshooter &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](https://github.com/OceanOC/Quest-Troubleshooter/blob/main/icon.ico "Icon")
 
 Makes finding Oculus files easy and allows to change some settings
+This is the C# and the future version that will be updated
 
 ## Why do I need this?
 
@@ -12,11 +13,4 @@ Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-T
     
 ## Building from source
 
-Requirements: Python 3.10 (should work in 3.8+)
-
-1. Git the project and use venv in python
-
-```bash
-  pip install -U PyQt6
-```
-2. Run noquest.py with Admin Privileges
+(currently not available)
