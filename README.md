@@ -2,6 +2,9 @@
 #  Oculus Troubleshooter &emsp; &emsp; &emsp; &emsp; &emsp; ![alt text](https://github.com/OceanOC/Quest-Troubleshooter/blob/main/icon.ico "Icon")
 
 Makes finding Oculus files easy and allows to change some settings
+This is the python version which will be deprecated in a future update
+
+This page is for archival pursoses
 
 ## Why do I need this?
 
