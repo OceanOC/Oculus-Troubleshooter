@@ -57,9 +57,10 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(12, 347);
+            button1.Location = new Point(10, 260);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(221, 51);
+            button1.Size = new Size(193, 38);
             button1.TabIndex = 0;
             button1.Text = "Advanced settings";
             button1.UseVisualStyleBackColor = true;
@@ -68,9 +69,10 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(326, 347);
+            button2.Location = new Point(285, 260);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(221, 51);
+            button2.Size = new Size(193, 38);
             button2.TabIndex = 1;
             button2.Text = "Open Oculus Folder";
             button2.UseVisualStyleBackColor = true;
@@ -79,9 +81,10 @@
             // button3
             // 
             button3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(12, 12);
+            button3.Location = new Point(10, 9);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(151, 51);
+            button3.Size = new Size(132, 38);
             button3.TabIndex = 2;
             button3.Text = "Stop Oculus";
             button3.UseVisualStyleBackColor = true;
@@ -90,9 +93,10 @@
             // button4
             // 
             button4.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(169, 12);
+            button4.Location = new Point(148, 9);
+            button4.Margin = new Padding(3, 2, 3, 2);
             button4.Name = "button4";
-            button4.Size = new Size(151, 51);
+            button4.Size = new Size(132, 38);
             button4.TabIndex = 3;
             button4.Text = "Start Oculus";
             button4.UseVisualStyleBackColor = true;
@@ -101,9 +105,10 @@
             // button5
             // 
             button5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button5.Location = new Point(12, 69);
+            button5.Location = new Point(10, 52);
+            button5.Margin = new Padding(3, 2, 3, 2);
             button5.Name = "button5";
-            button5.Size = new Size(151, 51);
+            button5.Size = new Size(132, 38);
             button5.TabIndex = 4;
             button5.Text = "Mirror";
             button5.UseVisualStyleBackColor = true;
@@ -112,9 +117,10 @@
             // button6
             // 
             button6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button6.Location = new Point(169, 69);
+            button6.Location = new Point(148, 52);
+            button6.Margin = new Padding(3, 2, 3, 2);
             button6.Name = "button6";
-            button6.Size = new Size(151, 51);
+            button6.Size = new Size(132, 38);
             button6.TabIndex = 5;
             button6.Text = "Debug Tool";
             button6.UseVisualStyleBackColor = true;
@@ -123,9 +129,10 @@
             // button7
             // 
             button7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button7.Location = new Point(12, 126);
+            button7.Location = new Point(10, 94);
+            button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
-            button7.Size = new Size(151, 51);
+            button7.Size = new Size(132, 38);
             button7.TabIndex = 6;
             button7.Text = "Gather Logs";
             button7.UseVisualStyleBackColor = true;
@@ -134,9 +141,10 @@
             // button8
             // 
             button8.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button8.Location = new Point(169, 126);
+            button8.Location = new Point(148, 94);
+            button8.Margin = new Padding(3, 2, 3, 2);
             button8.Name = "button8";
-            button8.Size = new Size(151, 51);
+            button8.Size = new Size(132, 38);
             button8.TabIndex = 7;
             button8.Text = "Fix Drivers";
             button8.UseVisualStyleBackColor = true;
@@ -145,9 +153,9 @@
             // label1
             // 
             label1.Font = new Font("Cabin", 16.1999989F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 401);
+            label1.Location = new Point(10, 301);
             label1.Name = "label1";
-            label1.Size = new Size(535, 40);
+            label1.Size = new Size(468, 30);
             label1.TabIndex = 8;
             label1.Text = "Oculus Troubleshooter";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -163,30 +171,31 @@
             // 
             // contextMenuStrip1
             // 
-            contextMenuStrip1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
+            contextMenuStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { showWindowToolStripMenuItem, startOculusToolStripMenuItem, stopOculusToolStripMenuItem, toolsToolStripMenuItem, exitToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(200, 154);
+            contextMenuStrip1.ShowImageMargin = false;
+            contextMenuStrip1.Size = new Size(141, 124);
             // 
             // showWindowToolStripMenuItem
             // 
             showWindowToolStripMenuItem.Name = "showWindowToolStripMenuItem";
-            showWindowToolStripMenuItem.Size = new Size(199, 30);
+            showWindowToolStripMenuItem.Size = new Size(140, 24);
             showWindowToolStripMenuItem.Text = "Show Window";
             showWindowToolStripMenuItem.Click += showWindowToolStripMenuItem_Click;
             // 
             // startOculusToolStripMenuItem
             // 
             startOculusToolStripMenuItem.Name = "startOculusToolStripMenuItem";
-            startOculusToolStripMenuItem.Size = new Size(199, 30);
+            startOculusToolStripMenuItem.Size = new Size(140, 24);
             startOculusToolStripMenuItem.Text = "Start Oculus";
             startOculusToolStripMenuItem.Click += startOculusToolStripMenuItem_Click;
             // 
             // stopOculusToolStripMenuItem
             // 
             stopOculusToolStripMenuItem.Name = "stopOculusToolStripMenuItem";
-            stopOculusToolStripMenuItem.Size = new Size(199, 30);
+            stopOculusToolStripMenuItem.Size = new Size(140, 24);
             stopOculusToolStripMenuItem.Text = "Stop Oculus";
             stopOculusToolStripMenuItem.Click += stopOculusToolStripMenuItem_Click;
             // 
@@ -194,58 +203,59 @@
             // 
             toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { debugToolToolStripMenuItem, mirrorToolStripMenuItem, logsToolStripMenuItem, driverToolStripMenuItem });
             toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            toolsToolStripMenuItem.Size = new Size(199, 30);
+            toolsToolStripMenuItem.Size = new Size(140, 24);
             toolsToolStripMenuItem.Text = "Tools";
             // 
             // debugToolToolStripMenuItem
             // 
             debugToolToolStripMenuItem.Name = "debugToolToolStripMenuItem";
-            debugToolToolStripMenuItem.Size = new Size(224, 30);
+            debugToolToolStripMenuItem.Size = new Size(148, 24);
             debugToolToolStripMenuItem.Text = "Debug Tool";
             debugToolToolStripMenuItem.Click += debugToolToolStripMenuItem_Click;
             // 
             // mirrorToolStripMenuItem
             // 
             mirrorToolStripMenuItem.Name = "mirrorToolStripMenuItem";
-            mirrorToolStripMenuItem.Size = new Size(224, 30);
+            mirrorToolStripMenuItem.Size = new Size(148, 24);
             mirrorToolStripMenuItem.Text = "Mirror";
             mirrorToolStripMenuItem.Click += mirrorToolStripMenuItem_Click;
             // 
             // logsToolStripMenuItem
             // 
             logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            logsToolStripMenuItem.Size = new Size(224, 30);
+            logsToolStripMenuItem.Size = new Size(148, 24);
             logsToolStripMenuItem.Text = "Logs";
             logsToolStripMenuItem.Click += logsToolStripMenuItem_Click;
             // 
             // driverToolStripMenuItem
             // 
             driverToolStripMenuItem.Name = "driverToolStripMenuItem";
-            driverToolStripMenuItem.Size = new Size(224, 30);
+            driverToolStripMenuItem.Size = new Size(148, 24);
             driverToolStripMenuItem.Text = "Driver";
             driverToolStripMenuItem.Click += driverToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
+            exitToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(199, 30);
+            exitToolStripMenuItem.Size = new Size(140, 24);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(256, 365);
+            label2.Location = new Point(224, 274);
             label2.Name = "label2";
-            label2.Size = new Size(39, 20);
+            label2.Size = new Size(31, 15);
             label2.TabIndex = 9;
             label2.Text = "1.0.0";
             // 
             // noquest
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 450);
+            ClientSize = new Size(491, 344);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button8);
@@ -257,8 +267,9 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(577, 497);
-            MinimumSize = new Size(577, 497);
+            Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(507, 383);
+            MinimumSize = new Size(507, 383);
             Name = "noquest";
             Text = "Oculus Troubleshooter";
             FormClosing += NQ_closing;

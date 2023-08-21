@@ -40,6 +40,8 @@
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
             tabPage2 = new TabPage();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             pictureBox1 = new PictureBox();
             checkBox2 = new CheckBox();
             button2 = new Button();
@@ -58,10 +60,10 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            tabControl1.Location = new Point(12, 12);
+            tabControl1.Location = new Point(11, 12);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(689, 434);
+            tabControl1.Size = new Size(689, 435);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -69,8 +71,8 @@
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 37);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(681, 393);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(681, 394);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Headset";
             tabPage1.UseVisualStyleBackColor = true;
@@ -84,7 +86,7 @@
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(27, 6);
+            groupBox1.Location = new Point(27, 5);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(181, 281);
             groupBox1.TabIndex = 1;
@@ -165,17 +167,38 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(label1);
+            tabPage2.Controls.Add(comboBox1);
             tabPage2.Controls.Add(pictureBox1);
             tabPage2.Controls.Add(checkBox2);
             tabPage2.Controls.Add(button2);
             tabPage2.Controls.Add(checkBox1);
             tabPage2.Location = new Point(4, 37);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(681, 393);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(681, 394);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Misc.";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(7, 88);
+            label1.Name = "label1";
+            label1.Size = new Size(104, 28);
+            label1.TabIndex = 6;
+            label1.Text = "Start with:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Oculus", "Windows", "Nothing" });
+            comboBox1.Location = new Point(110, 84);
+            comboBox1.Margin = new Padding(3, 4, 3, 4);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(145, 36);
+            comboBox1.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -183,7 +206,7 @@
             pictureBox1.Image = Properties.Resources.reload;
             pictureBox1.Location = new Point(250, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(28, 26);
+            pictureBox1.Size = new Size(27, 27);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
@@ -203,7 +226,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(501, 6);
+            button2.Location = new Point(501, 5);
             button2.Name = "button2";
             button2.Size = new Size(174, 49);
             button2.TabIndex = 2;
@@ -214,7 +237,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 6);
+            checkBox1.Location = new Point(6, 5);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(252, 32);
             checkBox1.TabIndex = 0;
@@ -271,5 +294,7 @@
         private Button button1;
         private ToolTip toolTip1;
         private PictureBox pictureBox1;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Diagnostics;
+
 using System.DirectoryServices.ActiveDirectory;
 using System.IO;
 using System.IO.Pipes;
@@ -132,7 +134,7 @@ namespace noquestcsharp
                 Process process = new Process();
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = "cmd.exe";
-                startInfo.Arguments = @"/C powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0";
+                startInfo.Arguments = @"/C start powercfg /SETACVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0";
                 process.StartInfo = startInfo;
                 process.Start();
             }
@@ -151,7 +153,7 @@ namespace noquestcsharp
             // Controller Sleep
             if (aswdone && checkBox1.ThreeState)
             {
-                
+
                 using (StreamWriter sw = File.AppendText(cmdpath))
                 {
                     controldone = false;
@@ -193,6 +195,34 @@ namespace noquestcsharp
             startInfo.Arguments = "/C start /d \"" + ocpath + "Support\\oculus-diagnostics\\\" OculusDebugToolCLI.exe -f CommandsforCLI.txt";
             process.StartInfo = startInfo;
             process.Start();
+            process.WaitForExit();
+
+            // Check "start with" combobox
+            string i = comboBox1.GetItemText(comboBox1.SelectedItem);
+            if (i != null)
+            {
+                if (i == "Nothing")
+                {
+                    // Do nothing
+                }
+                if (i == "Windows")
+                {
+                    RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    rk.SetValue("OculusTroubleshooter", Application.ExecutablePath);
+                    rk.Dispose();
+
+                }
+                else
+                {
+                    RegistryKey rk = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+                    rk.DeleteValue("OculusTroubleshooter", false);
+                    rk.Dispose();
+                }
+                if (i == "Oculus")
+                {
+                    // Currently this does not work
+                }
+            }
         }
     }
 }

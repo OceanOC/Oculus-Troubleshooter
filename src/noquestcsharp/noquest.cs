@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.CompilerServices;
 
 namespace noquestcsharp
 {
@@ -20,7 +22,7 @@ namespace noquestcsharp
         public string oculuspath = Environment.GetEnvironmentVariable("OculusBase");
         public noquest()
         {
-            InitializeComponent();
+                InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)

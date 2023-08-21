@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\proj\\noquestC#\\noquestcsharp\\noquestcsharp.csproj": {}
+    "C:\\Users\\User\\Source\\Repos\\Oculus-Troubleshooter\\src\\noquestcsharp\\noquestcsharp.csproj": {}
   },
   "projects": {
-    "D:\\proj\\noquestC#\\noquestcsharp\\noquestcsharp.csproj": {
+    "C:\\Users\\User\\Source\\Repos\\Oculus-Troubleshooter\\src\\noquestcsharp\\noquestcsharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\proj\\noquestC#\\noquestcsharp\\noquestcsharp.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Oculus-Troubleshooter\\src\\noquestcsharp\\noquestcsharp.csproj",
         "projectName": "noquestcsharp",
-        "projectPath": "D:\\proj\\noquestC#\\noquestcsharp\\noquestcsharp.csproj",
+        "projectPath": "C:\\Users\\User\\Source\\Repos\\Oculus-Troubleshooter\\src\\noquestcsharp\\noquestcsharp.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\proj\\noquestC#\\noquestcsharp\\obj\\",
+        "outputPath": "C:\\Users\\User\\Source\\Repos\\Oculus-Troubleshooter\\src\\noquestcsharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
