@@ -3,7 +3,7 @@
 
 Makes finding Oculus files easy and allows to change some settings
 
-This is the C# and the future version that will be updated, this will eventually be pushed to main
+Now out of alpha 🥳
 
 ## Why do I need this?
 
