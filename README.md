@@ -14,4 +14,7 @@ Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-T
     
 ## Building from source
 
-(currently not available)
+Requirements: Visual Studio 2022
+
+1. Open solution in Visual Studio
+2. Build Solution
