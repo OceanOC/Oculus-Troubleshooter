@@ -18,3 +18,8 @@ Requirements: Visual Studio 2022
 
 1. Open solution in Visual Studio
 2. Build Solution
+
+## STATUS: SUSPENDED ⚠️
+
+Due to little to no documentation for OculusDebugToolCLI any new features will not be added
+There will only be occasional bugfixes but if bugs are found
