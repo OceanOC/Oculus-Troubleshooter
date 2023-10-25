@@ -1,0 +1,30 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+		Width="500" Height="400"
+		CanResize="False"
+        x:Class="OculusTroubleshooter.MainWindow"
+        Title="Oculus Troubleshooter">
+
+	<Window.Resources>
+		
+	</Window.Resources>
+	
+	<Panel>
+		<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10, 20">Start Oculus Service</Button>
+		<Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">Stop Oculus Service</Button>
+		<Border Background="#e0dede" BoxShadow="0 0 10 2 #e0dede" CornerRadius="3" Padding="4" HorizontalAlignment="Left">
+			<Panel Width="150">
+				<Image Source="/icon.ico" VerticalAlignment="Top" Height="100"/>
+				<StackPanel VerticalAlignment="Top" Margin="0, 100">
+					<RadioButton>Main Menu</RadioButton>
+					<RadioButton>Touch Settings</RadioButton>
+					<RadioButton>Headset Settings</RadioButton>
+					<RadioButton>Windows Settings</RadioButton>
+				</StackPanel>
+			</Panel>
+		</Border>
+	</Panel>
+</Window>
