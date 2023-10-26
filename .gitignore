@@ -10,3 +10,4 @@
 *.cache
 /src/OculusTroubleshooter/bin/Debug/net6.0
 /src/OculusTroubleshooter/obj/Debug/net6.0
+/.vs

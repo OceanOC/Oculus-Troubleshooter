@@ -7,22 +7,61 @@
 		CanResize="False"
         x:Class="OculusTroubleshooter.MainWindow"
         Title="Oculus Troubleshooter">
-
-	<Window.Resources>
-		
-	</Window.Resources>
 	
 	<Panel>
-		<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10, 20">Start Oculus Service</Button>
-		<Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">Stop Oculus Service</Button>
+		
+		<Panel Name="MMenu">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10, 20" Click="StartOculus">Start Oculus Service</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Click="StopOculus">Stop Oculus Service</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 60" Width="150">Oculus Debug Tool</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 100" Width="150">Gather Logs</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="60" Width="150">Oculus Mirror</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="100" Width="150">Fix Drivers</Button>
+		</Panel>
+		<Panel Name="SMenu" Opacity="0">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<CheckBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">Disable Controller Sleep</CheckBox>
+		</Panel>
+		<Panel Name="WMenu" Opacity="0">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<CheckBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Name="DisableS" Checked="DisableSleep">Disable USB Selective Suspend</CheckBox>
+		</Panel>
+		<Panel Name="HMenu" Opacity="0">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<Label HorizontalAlignment="Right" Margin="230, 20" Width="100">ASW Options</Label>
+			<RadioButton HorizontalAlignment="Right" VerticalAlignment="Top" Margin="230, 50" Width="100">30Hz ASW</RadioButton>
+			<RadioButton HorizontalAlignment="Right" VerticalAlignment="Top" Margin="230, 80" Width="100">45Hz ASW</RadioButton>
+			<RadioButton HorizontalAlignment="Right" VerticalAlignment="Top" Margin="230, 110" Width="100">18Hz ASW</RadioButton>
+			<RadioButton HorizontalAlignment="Right" VerticalAlignment="Top" Margin="220, 140" Width="110">Force 45Hz</RadioButton>
+			<RadioButton HorizontalAlignment="Right" VerticalAlignment="Top" Margin="230, 170" Width="100">Auto ASW</RadioButton>
+		</Panel>
 		<Border Background="#e0dede" BoxShadow="0 0 10 2 #e0dede" CornerRadius="3" Padding="4" HorizontalAlignment="Left">
 			<Panel Width="150">
 				<Image Source="/icon.ico" VerticalAlignment="Top" Height="100"/>
-				<StackPanel VerticalAlignment="Top" Margin="0, 100">
-					<RadioButton>Main Menu</RadioButton>
-					<RadioButton>Touch Settings</RadioButton>
-					<RadioButton>Headset Settings</RadioButton>
-					<RadioButton>Windows Settings</RadioButton>
+				<StackPanel VerticalAlignment="Top" Margin="0, 110">
+					<RadioButton IsChecked="True" Checked="RadioButton_Checked">Main Menu</RadioButton>
+					<RadioButton Checked="RadioButton2_Checked">Touch Settings</RadioButton>
+					<RadioButton Checked="RadioButton3_Checked">Headset Settings</RadioButton>
+					<RadioButton Checked="RadioButton4_Checked">Windows Settings</RadioButton>
+					<Button Background="White" Margin="0, 60" Click="openfolder">Open Oculus Folder</Button>
+					<Button HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0, -40" Height="30" Background="White" Click="applychanges">Apply</Button>
 				</StackPanel>
 			</Panel>
 		</Border>
