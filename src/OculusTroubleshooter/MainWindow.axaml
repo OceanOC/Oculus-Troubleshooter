@@ -18,10 +18,10 @@
 			</Panel.Transitions>
 			<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10, 20" Click="StartOculus">Start Oculus Service</Button>
 			<Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Click="StopOculus">Stop Oculus Service</Button>
-			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 60" Width="150">Oculus Debug Tool</Button>
-			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 100" Width="150">Gather Logs</Button>
-			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="60" Width="150">Oculus Mirror</Button>
-			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="100" Width="150">Fix Drivers</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 60" Width="150" Click="DebugTool">Oculus Debug Tool</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 100" Width="150" Click="Logs">Gather Logs</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="60" Width="150" Click="Mirror">Oculus Mirror</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="100" Width="150" Click="Drivers">Fix Drivers</Button>
 		</Panel>
 		<Panel Name="SMenu" Opacity="0">
 			<Panel.Transitions>
@@ -29,7 +29,7 @@
 					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
 				</Transitions>
 			</Panel.Transitions>
-			<CheckBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20">Disable Controller Sleep</CheckBox>
+			<CheckBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Name="ContSleep">Disable Controller Sleep</CheckBox>
 		</Panel>
 		<Panel Name="WMenu" Opacity="0">
 			<Panel.Transitions>

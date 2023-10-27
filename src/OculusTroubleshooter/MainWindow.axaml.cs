@@ -8,7 +8,7 @@ namespace OculusTroubleshooter
 {
     public partial class MainWindow : Window
     {
-        private string oculusfolder = @$"{Environment.ExpandEnvironmentVariables("%ProgramW6432%")}\Oculus\";
+        private string oculusfolder = Environment.ExpandEnvironmentVariables("%OculusBase%");
 
         public MainWindow()
         {
@@ -56,12 +56,16 @@ namespace OculusTroubleshooter
         // Apply changes
         private void applychanges(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            
+            if (ContSleep.IsChecked == true)
+            {
+
+            }
         }
 
         // Disable/Enable USB Selective Suspend
         private void DisableSleep(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            // This is one of the worst ways of changeing powercfg but theres no other way in C#
             if (DisableS.IsChecked == true)
             {
                 Process.Start("powercfg", "/SETDCVALUEINDEX SCHEME_CURRENT 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0​");
@@ -72,6 +76,7 @@ namespace OculusTroubleshooter
             }
         }
 
+        // Stop Oculus Service
         private void StartOculus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -83,6 +88,7 @@ namespace OculusTroubleshooter
             process.Start();
         }
 
+        // Start Oculus Service
         private void StopOculus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
@@ -92,6 +98,30 @@ namespace OculusTroubleshooter
             startInfo.Arguments = "/C net stop OVRService";
             process.StartInfo = startInfo;
             process.Start();
+        }
+
+        // Oculus Debug Tool
+        private void DebugTool(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Process.Start(oculusfolder + @"\Support\oculus-diagnostics\OculusDebugTool.exe");
+        }
+
+        // Gather Logs
+        private void Logs(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Process.Start(oculusfolder + @"\Support\oculus-diagnostics\OculusLogGatherer.exe");
+        }
+
+        // Oculus Mirror
+        private void Mirror(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Process.Start(oculusfolder + @"\Support\oculus-diagnostics\OculusMirror.exe");
+        }
+
+        // Fix Drivers
+        private void Drivers(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Process.Start(oculusfolder + @"\Support\oculus-drivers\oculus-driver.exe");
         }
     }
 }
