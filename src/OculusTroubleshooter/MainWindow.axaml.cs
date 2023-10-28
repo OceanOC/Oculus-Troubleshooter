@@ -1,14 +1,20 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using MsBox.Avalonia.Enums;
+using MsBox.Avalonia;
 using System;
 using System.Diagnostics;
+using System.Security.Principal;
 using System.Windows.Input;
+using Tmds.DBus.Protocol;
 
 namespace OculusTroubleshooter
 {
     public partial class MainWindow : Window
     {
         private string oculusfolder = Environment.ExpandEnvironmentVariables("%OculusBase%");
+
+        
 
         public MainWindow()
         {
@@ -21,29 +27,11 @@ namespace OculusTroubleshooter
         private void RadioButton_Checked(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             MMenu.Opacity = 1;
-            SMenu.Opacity = 0;
-            HMenu.Opacity = 0;
-            WMenu.Opacity = 0;
-        }
-        private void RadioButton2_Checked(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            MMenu.Opacity = 0;
-            SMenu.Opacity = 1;
-            HMenu.Opacity = 0;
-            WMenu.Opacity = 0;
-        }
-        private void RadioButton3_Checked(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            MMenu.Opacity = 0;
-            SMenu.Opacity = 0;
-            HMenu.Opacity = 1;
             WMenu.Opacity = 0;
         }
         private void RadioButton4_Checked(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             MMenu.Opacity = 0;
-            SMenu.Opacity = 0;
-            HMenu.Opacity = 0;
             WMenu.Opacity = 1;
         }
 
@@ -51,15 +39,6 @@ namespace OculusTroubleshooter
         private void openfolder(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Process.Start("explorer.exe", $"\"{oculusfolder}\"");
-        }
-
-        // Apply changes
-        private void applychanges(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-        {
-            if (ContSleep.IsChecked == true)
-            {
-
-            }
         }
 
         // Disable/Enable USB Selective Suspend
@@ -122,6 +101,61 @@ namespace OculusTroubleshooter
         private void Drivers(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             Process.Start(oculusfolder + @"\Support\oculus-drivers\oculus-driver.exe");
+        }
+        private void PwrPlan(object? sender, SelectionChangedEventArgs e)
+        {
+            bool isElevated;
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+            {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                isElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            if (PowerCombo != null)
+            {
+                
+            if (PowerCombo.SelectedIndex == 0)
+            {
+                if (isElevated)
+                {
+                    Process.Start("powercfg", "/s 381b4222-f694-41f0-9685-ff5bb260df2e");
+                }
+                    else
+                    {
+                        var box = MessageBoxManager.GetMessageBoxStandard("Error", "Please restart the program with administrator permissions.", ButtonEnum.Ok);
+                        box.ShowAsync();
+                    }
+                } 
+            else if (PowerCombo.SelectedIndex == 1)
+            {
+                if (isElevated)
+                {
+                    Process.Start("powercfg", "/s 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c");
+                } else
+                {
+                        var box = MessageBoxManager.GetMessageBoxStandard("Error", "Please restart the program with administrator permissions.", ButtonEnum.Ok);
+                        box.ShowAsync();
+                }
+                } 
+            else if (PowerCombo.SelectedIndex == 2)
+            {
+                if (isElevated)
+                {
+                    Process.Start("powercfg", "/s a1841308-3541-4fab-bc81-f71556f20b4a");
+                } else
+                {
+                    var box = MessageBoxManager.GetMessageBoxStandard("Error", "Please restart the program with administrator permissions.",ButtonEnum.Ok);
+                    box.ShowAsync();
+                }
+            }
+
+            }
+        }
+
+
+        private void Credits(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var m = new CreditWindow();
+            m.Show();
         }
     }
 }
