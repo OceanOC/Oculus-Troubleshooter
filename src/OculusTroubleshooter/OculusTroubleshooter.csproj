@@ -8,7 +8,7 @@
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="avalonia-white-purple.svg" />
+    <None Remove="avalonia.png" />
     <None Remove="icon.ico" />
     <None Remove="icon.png" />
   </ItemGroup>
@@ -26,7 +26,7 @@
 
 
   <ItemGroup>
-    <AvaloniaResource Include="avalonia-white-purple.svg" />
+    <AvaloniaResource Include="avalonia.png" />
     <AvaloniaResource Include="icon.ico" />
     <Resource Include="icon.png" />
   </ItemGroup>
