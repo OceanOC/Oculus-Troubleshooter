@@ -1,4 +1,0 @@
-﻿[*.cs]
-
-# AXN0002: Unhandled exception occured while generating typed Name references. Please file an issue: https://github.com/avaloniaui/Avalonia
-dotnet_diagnostic.AXN0002.severity = none
