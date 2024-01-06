@@ -12,10 +12,9 @@ Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-T
     
 ## Building from source
 
-Requirements: Visual Studio 2022
+Requirements: .NET Framework 8.0
 
-1. Open solution in Visual Studio
-2. Build Solution
+1. ```dotnet publish (csproj)```
 
 ## STATUS: SUSPENDED ⚠️
 
