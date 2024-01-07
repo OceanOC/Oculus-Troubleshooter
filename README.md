@@ -3,6 +3,7 @@
 
 Makes finding Oculus files easy and allows to change some settings
 
+
 ## Why do I need this?
 
 if you want to change settings from the debug tool you'd have to go through tons of files to open it instead you'd just have to press 2 buttons with this program
@@ -14,7 +15,7 @@ Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-T
 
 Requirements: .NET Framework 8.0
 
-1. ```dotnet publish (csproj)```
+1. ```dotnet build (csproj)```
 
 ## STATUS: SUSPENDED ⚠️
 
