@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="400"
+		Width="500" Height="400"
+		CanResize="False"
+        x:Class="OculusTroubleshooter.MainWindow"
+        Title="Oculus Troubleshooter">
+	
+	<Panel>
+		
+		<Panel Name="MMenu">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" Margin="10, 20" Click="StartOculus">Start Oculus Service</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20" Click="StopOculus">Stop Oculus Service</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 60" Width="150" Click="DebugTool">Oculus Debug Tool</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Margin="13, 100" Width="150" Click="Logs">Gather Logs</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="60" Width="150" Click="Mirror">Oculus Mirror</Button>
+			<Button VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="100" Width="150" Click="Drivers">Fix Drivers</Button>
+		</Panel>
+		<Panel Name="WMenu" Opacity="0">
+			<Panel.Transitions>
+				<Transitions>
+					<DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+				</Transitions>
+			</Panel.Transitions>
+			<CheckBox VerticalAlignment="Top" HorizontalAlignment="Right" Margin="20" Name="DisableS" Checked="DisableSleep">Disable USB Selective Suspend</CheckBox>
+			<Label Content="Current Power Plan" HorizontalAlignment="Right" Margin="20, 70"/>
+			<ComboBox Name="PowerCombo" HorizontalAlignment="Right" Margin="20, 100" SelectedIndex="1" SelectionChanged="PwrPlan">
+				<ComboBoxItem>Balanced</ComboBoxItem>
+				<ComboBoxItem>High Performance</ComboBoxItem>
+				<ComboBoxItem>Power Saver</ComboBoxItem>
+			</ComboBox>
+		</Panel>
+		<Border Background="#e0dede" BoxShadow="0 0 10 2 #e0dede" CornerRadius="3" Padding="4" HorizontalAlignment="Left">
+			<Panel Width="150">
+				<Button Background="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 50" Click="openfolder">Open Oculus Folder</Button>
+				<Button Background="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 10" Click="Credits">Credits</Button>
+				<Image Source="/icon.ico" VerticalAlignment="Top" Height="100"/>
+				<StackPanel VerticalAlignment="Top" Margin="0, 110">
+					<RadioButton IsChecked="True" Checked="RadioButton_Checked">Main Menu</RadioButton>
+					<RadioButton Checked="RadioButton4_Checked">Windows Settings</RadioButton>
+				</StackPanel>
+			</Panel>
+		</Border>
+	</Panel>
+</Window>

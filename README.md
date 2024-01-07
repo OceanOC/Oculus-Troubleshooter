@@ -3,7 +3,6 @@
 
 Makes finding Oculus files easy and allows to change some settings
 
-Now out of alpha 🥳
 
 ## Why do I need this?
 
@@ -14,4 +13,11 @@ Run the Oculus Troubleshooter from [Releases](https://github.com/OceanOC/Quest-T
     
 ## Building from source
 
-(currently not available)
+Requirements: .NET Framework 8.0
+
+1. ```dotnet build (csproj)```
+
+## STATUS: SUSPENDED ⚠️
+
+Due to little to no documentation for OculusDebugToolCLI any new features will not be added
+There will only be occasional bugfixes if bugs are found

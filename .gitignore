@@ -1,0 +1,16 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/.vs
+/.gitignore
+/.gitignore
+/src/OculusTroubleshooter/.vs/OculusTroubleshooter
+/src/OculusTroubleshooter/obj/project.nuget.cache
+*.cache
+/src/OculusTroubleshooter/bin/Debug/net6.0
+/src/OculusTroubleshooter/obj/Debug/net6.0
+/.vs
+/src/OculusTroubleshooter/.vs/ProjectEvaluation/oculustroubleshooter.metadata.v7.bin
+/src/OculusTroubleshooter/.vs/ProjectEvaluation/oculustroubleshooter.projects.v7.bin
+/src/OculusTroubleshooter/.editorconfig
